@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_horaire_travail" model="ir.actions.act_window">
+        <field name="name">Horaire travail</field>
+        <field name="res_model">hr.horaire.travail</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first horaire de travail
+            </p>
+        </field>
+    </record>
+
+    <record id="view_horaire_travail_form" model="ir.ui.view">
+        <field name="name">hr.horaire.travail.form</field>
+        <field name="model">hr.horaire.travail</field>
+        <field name="arch" type="xml">
+            <form string="horaire travail">
+                <sheet>
+                    <h1 style="color:green">Ajout d'un horaire de travail</h1>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="marge_retard" />
+                            <field name="marge_dp_anticipe" />
+                            <field name="jours_travailles" />
+                            <field name="repos"/>
+                            <field name="debut" widget="float_time"/>
+                        </group>
+                        <group>
+                            <field name="fin" widget="float_time"/>
+                            <field name="debut_entree" widget="float_time"/>
+                            <field name="fin_entree" widget="float_time"/>
+                            <field name="debut_sortie" widget="float_time"/>
+                            <field name="fin_sortie" widget="float_time"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_horaire_travail_tree" model="ir.ui.view">
+        <field name="name">hr.horaire.travail.tree</field>
+        <field name="model">hr.horaire.travail</field>
+        <field name="arch" type="xml">
+            <tree string="Horaire travail" >
+                <field name="name"/>
+                <field name="debut" widget="float_time"/>
+                <field name="fin" widget="float_time"/>
+                <field name="marge_retard"/>
+                <field name="marge_dp_anticipe"/>
+                <field name="debut_entree" widget="float_time"/>
+                <field name="fin_entree" widget="float_time"/>
+                <field name="debut_sortie" widget="float_time"/>
+                <field name="fin_sortie" widget="float_time"/>
+                <field name="jours_travailles"/>
+                <field name="repos"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

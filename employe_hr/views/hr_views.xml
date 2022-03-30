@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_form_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <!-- ajouter un titre avant l'image-->
+            <xpath expr="//field[@name='image_1920']" position="before">
+                <h1 style="color:green">Ajouter un employé </h1>
+            </xpath>
+            <!-- rendre tags est invisible -->
+            <xpath expr="//field[@name='category_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- modifier le nom de manager-->
+            <xpath expr="//field[@name='parent_id']" position="attributes">
+                <attribute name="string" >Chef d'équipe</attribute>
+            </xpath>
+            <!-- rendre coach est invisible -->
+            <xpath expr="//field[@name='coach_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- rendre le champ work_phone invisible-->
+            <xpath expr="//field[@name='work_phone']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- ajouter le champ matricule après le champ mobile phone -->
+            <xpath expr="//field[@name='mobile_phone']" position="before">
+                <field name="matricule"/>
+            </xpath>
+            <!-- ajouter le champ cin aprés le champ matricule-->
+            <xpath expr="//field[@name='matricule']" position="after">
+                <field name="cin"/>
+            </xpath>
+            <!-- modifier la position dee champ fax apres le champ work_phone avec move-->
+            <xpath expr="//field[@name='department_id']" position="after">
+                <xpath expr="//field[@name='birthday']" position="move"/>
+            </xpath>
+            <!-- modifier la position de champ birthday apres le champ gender avec move     -->
+            <xpath expr="//field[@name='birthday']" position="after">
+                <xpath expr="//field[@name='gender']" position="move"/>
+            </xpath>
+            <!--  modifier la position de champ birthday apres le champ gender avec move    -->
+            <xpath expr="//field[@name='cin']" position="after">
+                <xpath expr="//field[@name='children']" position="move"/>
+            </xpath>
+            <!--    -->
+            <xpath expr="//field[@name='children']" position="after">
+                <xpath expr="//field[@name='mobile_phone']" position="move"/>
+            </xpath>
+            <!--     -->
+            <xpath expr="//field[@name='mobile_phone']" position="attributes">
+                <attribute name="string" >Téléphone</attribute>
+            </xpath>
+            <!--     -->
+             <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="cnss" />
+            </xpath>
+            <!--     -->
+             <xpath expr="//field[@name='work_email']" position="attributes">
+                <attribute name="string">Email</attribute>
+            </xpath>
+            <!--     -->
+            <xpath expr="//field[@name='work_email']" position="after">
+                 <field name="activite"/>
+            </xpath>
+            <!--    -->
+            <xpath expr="//field[@name='cnss']" position="after">
+                <field name="teletravail" />
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[@name='public']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+             <xpath expr="//form/sheet/notebook/page[@name='personal_information']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+              <xpath expr="//field[@name='department_id']" position="after">
+                <xpath expr="//field[@name='parent_id']" position="move"/>
+            </xpath>
+            <!-- modifier la position dee champ fax apres le champ work_phone avec move-->
+            <xpath expr="//field[@name='gender']" position="after">
+                <xpath expr="//field[@name='marital']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='marital']" position="attributes">
+                <attribute name="string">Situation sociale</attribute>
+            </xpath>
+            <xpath expr="//field[@name='activite']" position="before">
+               <field name="adresse" />
+            </xpath>
+            <xpath expr="//field[@name='birthday']" position="after">
+                <xpath expr="//field[@name='country_id']" position="move"/>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[@name='hr_settings']" position="attributes">
+                <attribute name="string">Autres paramètres</attribute>
+            </xpath>
+            <xpath expr="//field[@name='job_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='cin']" position="after">
+                <field name="role" />
+            </xpath>
+           <xpath expr="//field[@name='employee_type']" position="attributes">-->
+                    <attribute name="invisible">1</attribute>-->
+           </xpath>
+            <xpath expr="//form/sheet/notebook/page/group/group[@name='identification_group']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='activite']" position="after">
+                <field name="solde" />
+            </xpath>
+            <xpath expr="//field[@name='solde']" position="after">
+                <field name="tableau_horaire" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_employee_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='work_phone']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='activity_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='activity_date_deadline']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='job_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='parent_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="job_title" />
+            </xpath>
+        </field>
+    </record>
+
+     <record id="hr_kanban_view_employees_inherit" model="ir.ui.view">
+        <field name="name">	hr.employee.kanban</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='work_phone']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+        </field>
+     </record>
+</odoo>

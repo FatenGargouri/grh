@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_contract_form_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.form</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Ajouter un champ de date démarrage  -->
+            <xpath expr="//form/sheet/widget[@name='web_ribbon']" position="before">
+                <h1 style="color:green">Le contrat d'un employé </h1>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="demarrage"/>
+            </xpath>
+            <!-- Rendre le champ est invisible -->
+            <xpath expr="//field[@name='structure_type_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- Ajouter un champ de date rappel1  -->
+            <xpath expr="//field[@name='date_end']" position="after">
+                <field name="rappel1"/>
+            </xpath>
+            <!-- Ajouter un champ de date rappel1  -->
+            <xpath expr="//field[@name='rappel1']" position="after">
+                <field name="rappel2"/>
+            </xpath>
+            <!-- rendre le champ invisible -->
+            <xpath expr="//field[@name='hr_responsible_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- Ajouter un champ de date rappel1  -->
+            <xpath expr="//field[@name='job_id']" position="after">
+                <field name="type"/>
+            </xpath>
+            <!-- rendre le champ invisible -->
+            <xpath expr="//field[@name='contract_type_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='department_id']" position="before">
+                <xpath expr="//field[@name='job_id']" position="move"/>
+            </xpath>
+            <!-- Ajouter un champ de date rappel1  -->
+            <xpath expr="//field[@name='type']" position="after">
+                <field name="validite" widget="radio" />
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[@name='other']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[@name='information']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='resource_calendar_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/group/group/label" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_contract_history_view_form_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.history.form</field>
+        <field name="model">hr.contract.history</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_history_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[@name='contract_others']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='resource_calendar_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='wage']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='name']" position="after">
+                <field name="type"  />
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='date_end']" position="after">
+                <field name="demarrage" />
+            </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Référence contrat</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_contract_history_view_list_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.history.list</field>
+        <field name="model">hr.contract.history</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_history_view_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Référence contrat</attribute>
+            </xpath>
+            <xpath expr="//field[@name='contract_count']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <xpath expr="//field[@name='name']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='date_start']" position="after">
+               <field name="date_end" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

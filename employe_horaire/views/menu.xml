@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_horaire_root"
+              name="Horaires"
+              sequence="1" />
+
+    <menuitem id="menu_table_master"
+              name="Tableau horaire Détails"
+              parent="menu_horaire_root"
+              sequence="1" />
+
+    <menuitem id="menu_table"
+              name="Table horaire"
+              parent="menu_table_master"
+              action="action_horaire_table"
+              sequence="1" />
+
+    <menuitem id="menu_travail_master"
+              name="Horaire travail Détails"
+              parent="menu_horaire_root"
+              sequence="2" />
+
+    <menuitem id="menu_travail"
+              name="Horaire travail"
+              parent="menu_travail_master"
+              action="action_horaire_travail"
+              sequence="2" />
+
+</odoo>
