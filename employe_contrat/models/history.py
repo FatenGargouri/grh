@@ -4,12 +4,9 @@
 
 from odoo import api, fields, models,_
 
-
-
-
 class ContractHistoryEmployee(models.Model):
     """
-      NB: description de la classe
+      Héritage de la classe contract
     """
 
     _inherit = 'hr.contract.history',

@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!--Ce record permet l'héritage de la vue formulaire de departement -->
         <record id="view_department_form_inherit" model="ir.ui.view">
             <field name="name">hr.department.form</field>
             <field name="model">hr.department</field>
             <field name="inherit_id" ref="hr.view_department_form"/>
             <field name="arch" type="xml">
-                <!--ajouter un titre -->
+                <!--ajouter un titre avant le formulaire-->
                 <xpath expr="//form/sheet/widget[@name='web_ribbon']" position="before">
-                    <h1 style="color:green">Ajouter un département</h1>
+                    <h1 style="color:green">Informations départements</h1>
                 </xpath>
+                <!-- rendre le champ name non obligatoire -->
                 <xpath expr="//field[@name='name']" position="attributes">
                     <attribute name="required">False</attribute>
                 </xpath>
+                <!-- modifier le label de champ manager_id -->
                 <xpath expr="//field[@name='manager_id']" position="attributes">
-                <attribute name="string">Chef d'équipe</attribute>
+                    <attribute name="string">Chef d'équipe</attribute>
                 </xpath>
             </field>
         </record>
 
-
-
+        <!--Ce record permet l'héritage de la vue tree de departement -->
         <record id="view_department_tree_inherit" model="ir.ui.view">
             <field name="name">hr.department.tree</field>
             <field name="model">hr.department</field>
             <field name="inherit_id" ref="hr.view_department_tree"/>
             <field name="arch" type="xml">
+                <!-- rendre le champ total_employee est invisible -->
                 <xpath expr="//field[@name='total_employee']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-                 <xpath expr="//field[@name='parent_id']" position="attributes">
+                <!-- rendre le champ parent_id est invisible -->
+                <xpath expr="//field[@name='parent_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <!-- modifier le label de champ manager_id -->
                 <xpath expr="//field[@name='manager_id']" position="attributes">
                     <attribute name="string">Chef d'équipe</attribute>
                 </xpath>

@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!--Ce record permet l'héritage de la vue formulaire de contrat-->
     <record id="view_hr_contract_form_inherit" model="ir.ui.view">
         <field name="name">hr.contract.form</field>
         <field name="model">hr.contract</field>
         <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
         <field name="arch" type="xml">
-            <!-- Ajouter un champ de date démarrage  -->
+            <!-- Ajouter un titre avant le formulaire -->
             <xpath expr="//form/sheet/widget[@name='web_ribbon']" position="before">
                 <h1 style="color:green">Le contrat d'un employé </h1>
             </xpath>
+            <!-- ajouter le champ demarrage aprés le champ employee_id-->
             <xpath expr="//field[@name='employee_id']" position="after">
                 <field name="demarrage"/>
             </xpath>
-            <!-- Rendre le champ est invisible -->
+            <!-- Rendre le champ structure_type_id est invisible -->
             <xpath expr="//field[@name='structure_type_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <!-- Ajouter un champ de date rappel1  -->
+            <!-- Ajouter un champ de date rappel1 apres le champ date_end -->
             <xpath expr="//field[@name='date_end']" position="after">
                 <field name="rappel1"/>
             </xpath>
-            <!-- Ajouter un champ de date rappel1  -->
+            <!-- Ajouter un champ de date rappel2 apres le champ rappel1  -->
             <xpath expr="//field[@name='rappel1']" position="after">
                 <field name="rappel2"/>
             </xpath>
-            <!-- rendre le champ invisible -->
+            <!-- rendre le champ hr_responsible_id invisible -->
             <xpath expr="//field[@name='hr_responsible_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
@@ -32,75 +34,91 @@
             <xpath expr="//field[@name='job_id']" position="after">
                 <field name="type"/>
             </xpath>
-            <!-- rendre le champ invisible -->
+            <!-- rendre le champ contract_type_id invisible -->
             <xpath expr="//field[@name='contract_type_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <!-- modifier la position de champ job_id apres le champ department_id avec move     -->
             <xpath expr="//field[@name='department_id']" position="before">
                 <xpath expr="//field[@name='job_id']" position="move"/>
             </xpath>
-            <!-- Ajouter un champ de date rappel1  -->
+            <!-- Ajouter le champ validite apres le champ type  -->
             <xpath expr="//field[@name='type']" position="after">
                 <field name="validite" widget="radio" />
             </xpath>
+            <!-- rendre la page other est invisible -->
             <xpath expr="//form/sheet/notebook/page[@name='other']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <!-- rendre la page information est invisible -->
             <xpath expr="//form/sheet/notebook/page[@name='information']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <!-- rendre le champ resource_calendar_id  invisible -->
             <xpath expr="//field[@name='resource_calendar_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <!-- rendre le group label  invisible -->
             <xpath expr="//form/sheet/group/group/label" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
         </field>
     </record>
-
+    <!--Ce record permet l'héritage de la history form  -->
     <record id="hr_contract_history_view_form_inherit" model="ir.ui.view">
         <field name="name">hr.contract.history.form</field>
         <field name="model">hr.contract.history</field>
         <field name="inherit_id" ref="hr_contract.hr_contract_history_view_form"/>
         <field name="arch" type="xml">
+            <!-- rendre le group est invisible -->
             <xpath expr="//form/sheet/group" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <!-- rendre la page contract_others est invisible -->
             <xpath expr="//form/sheet/notebook/page[@name='contract_others']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <!-- rendre le field ressource_calendar_id est invisible -->
             <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='resource_calendar_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <!-- rendre le field wage est invisible -->
             <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='wage']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <!-- rendre le field name est invisible -->
             <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='name']" position="after">
                 <field name="type"  />
             </xpath>
+            <!-- ajouter le champ demarrage apres le champ date_end -->
             <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='date_end']" position="after">
                 <field name="demarrage" />
             </xpath>
+            <!-- modifier le label de champ name -->
             <xpath expr="//field[@name='name']" position="attributes">
                 <attribute name="string">Référence contrat</attribute>
             </xpath>
         </field>
     </record>
-
+    <!--Ce record permet l'héritage de la history list  -->
     <record id="hr_contract_history_view_list_inherit" model="ir.ui.view">
         <field name="name">hr.contract.history.list</field>
         <field name="model">hr.contract.history</field>
         <field name="inherit_id" ref="hr_contract.hr_contract_history_view_list"/>
         <field name="arch" type="xml">
+            <!-- modifier le label de champ name -->
             <xpath expr="//field[@name='name']" position="attributes">
                 <attribute name="string">Référence contrat</attribute>
             </xpath>
+            <!-- rendre le field contract_count est invisible -->
             <xpath expr="//field[@name='contract_count']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <!-- modifier la position de champ name apres le champ employee_id avec move-->
             <xpath expr="//field[@name='employee_id']" position="after">
                 <xpath expr="//field[@name='name']" position="move"/>
             </xpath>
+            <!-- ajouter le champ date_start apres le champ date_end-->
             <xpath expr="//field[@name='date_start']" position="after">
                <field name="date_end" />
             </xpath>

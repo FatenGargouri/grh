@@ -6,10 +6,13 @@ from odoo import api, fields, models, _
 
 
 class HrDepartment(models.Model):
+    """
+        HrDepartment est une classe qui permet l'héritage de hr.departement  pour faire des changements .
+    """
 
     _inherit = "hr.department"
 
-    #sous_dep = fields.One2many('hr.department','parent_id',string="Sous département")
+
 
 
 
