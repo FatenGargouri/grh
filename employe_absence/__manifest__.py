@@ -2,23 +2,20 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'horaires',
+    'name': 'Absences',
     'version': '1.1',
-    'category': 'Human Resources/horaires',
+    'category': 'Human Resources/Absences',
     'sequence': 95,
-    'summary': 'Horaire des employés',
+    'summary': 'Absence des employés',
     'description': "",
     'depends': [
-        'base',
-        'mail',
         'hr'
 
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/table_horaire_views.xml',
-        'views/horaire_travail_views.xml',
-        'views/planing_views.xml',
+        'views/motif_absence_views.xml',
+        'views/affecter_absence_views.xml',
         'views/menu.xml',
 
 

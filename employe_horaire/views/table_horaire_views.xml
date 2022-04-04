@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
+    <!-- ce record donne l'action pour afficher à l'interface -->
     <record id="action_horaire_table" model="ir.actions.act_window">
         <field name="name">Tableau horaire</field>
         <field name="res_model">hr.table.horaire</field>
@@ -11,7 +11,7 @@
             </p>
         </field>
     </record>
-
+    <!-- ce record permet de faire le formulaire de la vue table_horaire -->
     <record id="view_table_horaire_form" model="ir.ui.view">
         <field name="name">hr.table.horaire.form</field>
         <field name="model">hr.table.horaire</field>
@@ -45,7 +45,7 @@
             </form>
         </field>
     </record>
-
+    <!-- ce record permet de faire la tree de la vue table_horaire -->
     <record id="view_table_horaire_tree" model="ir.ui.view">
         <field name="name">hr.table.horaire.tree</field>
         <field name="model">hr.table.horaire</field>

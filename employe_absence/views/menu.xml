@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_horaire_root"
+              name="Absences"
+              sequence="1" />
+
+    <menuitem id="menu_motif_master"
+              name="Motif absence"
+              parent="menu_horaire_root"
+              action ="action_motif"
+              sequence="1" />
+
+    <menuitem id="menu_affecter_master"
+              name="Affectation absence"
+              parent="menu_horaire_root"
+              action="action_affectation"
+              sequence="2" />
+
+
+
+</odoo>

@@ -26,4 +26,10 @@
               action="action_horaire_travail"
               sequence="2" />
 
+    <menuitem id="menu_planing_master"
+              name="Planing"
+              parent="menu_horaire_root"
+              action="action_planing"
+              sequence="3" />
+
 </odoo>

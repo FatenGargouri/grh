@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.motif.absence,access_motif_absence,employe_absence.model_motif_absence,base.group_user,1,1,1,1
+access.affectation.absence,access_affectation_absence,employe_absence.model_affectation_absence,base.group_user,1,1,1,1

@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access.hr.table.horaire,access_hr_table_horaire,employe_horaire.model_hr_table_horaire,base.group_user,1,1,1,1
 access.hr.horaire.travail,access_hr_horaire_travail,employe_horaire.model_hr_horaire_travail,base.group_user,1,1,1,1
+access.hr.planing,access_hr_planing,employe_horaire.model_hr_planing,base.group_user,1,1,1,1

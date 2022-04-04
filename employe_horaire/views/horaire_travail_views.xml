@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- ce record donne l'action pour afficher à l'interface -->
     <record id="action_horaire_travail" model="ir.actions.act_window">
         <field name="name">Horaire travail</field>
         <field name="res_model">hr.horaire.travail</field>
@@ -10,7 +11,7 @@
             </p>
         </field>
     </record>
-
+    <!-- ce record permet de faire le formulaire de la vue horaire_travail -->
     <record id="view_horaire_travail_form" model="ir.ui.view">
         <field name="name">hr.horaire.travail.form</field>
         <field name="model">hr.horaire.travail</field>
@@ -47,7 +48,7 @@
             </form>
         </field>
     </record>
-
+    <!-- ce record permet de faire la tree de la vue horaire_travail -->
     <record id="view_horaire_travail_tree" model="ir.ui.view">
         <field name="name">hr.horaire.travail.tree</field>
         <field name="model">hr.horaire.travail</field>

@@ -5,10 +5,13 @@ from odoo import api, fields, models, _
 
 
 class hr_horaire_travail(models.Model):
+    """
+            hr_horaire_travail est une classe qui permet de gérer les travails horaires
+        """
     _name = "hr.horaire.travail"
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Horaire de travail"
-
+    # Les champs de la classe hr.horaire.travail
     name = fields.Char(string="Horaire")
     marge_retard = fields.Integer(string="Marge de retard (min)")
     marge_dp_anticipe = fields.Integer(string="Marge dp anticipé (min)")
