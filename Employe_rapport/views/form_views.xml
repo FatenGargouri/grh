@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="attendance_report_form">
+            <field name="name">attendance.report.form</field>
+            <field name="model">attendance.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="employee_id" widget="many2many_tags"/>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print" type="object" class="btn-success"/>
+                        <button string="Close" class="btn-danger" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="attendance_report_action_window">
+            <field name="name">Attendance Report</field>
+            <field name="res_model">attendance.report</field>
+            <field name="view_mode">form</field>
+        </record>
+
+    </data>
+</odoo>
