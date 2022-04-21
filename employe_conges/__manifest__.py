@@ -20,6 +20,9 @@
     'data': [
 
         'views/conges_views.xml',
+        'views/allocation_views.xml',
+        'views/conges_public_views.xml',
+        'views/type_conges_views.xml',
 
 
 

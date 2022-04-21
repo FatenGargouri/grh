@@ -14,6 +14,9 @@
             <xpath expr="//field[@name='contact']" position="after">
                 <field name="adresse"/>
             </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
