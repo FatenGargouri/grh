@@ -2,24 +2,25 @@
 
 from odoo import models, fields, api
 from datetime import date, datetime, time
+from odoo.exceptions import ValidationError
 from dateutil.relativedelta import relativedelta
 from pytz import timezone
+from calendar import calendar
 
 
-class AttendanceReport(models.TransientModel):
-    _name = 'attendance.report'
-    _description = "Attendance Report Wizard"
+class RapportSynthese(models.TransientModel):
+    _name = 'rapport.synthese'
+    _description = "Rapport synthèses des employés"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    from_date = fields.Date('From Date', default=lambda self: fields.Date.to_string(date.today().replace(day=1)),
-                            required=True)
-    to_date = fields.Date("To Date", default=lambda self: fields.Date.to_string(
-        (datetime.now() + relativedelta(months=+1, day=1, days=-1)).date()), required=True)
     employee_id = fields.Many2many('hr.employee', string="Employee")
-
+    from_date = fields.Date(string= 'Date début', default=lambda self: fields.Date.to_string(date.today()),required=True)
+    to_date = fields.Date(string="Date fin",required=True)
 
     def print_report(self):
         domain = []
         datas = []
+        jour_ferier=[]
         if self.employee_id:
             domain.append(('id', '=', self.employee_id.ids))
 
@@ -39,18 +40,50 @@ class AttendanceReport(models.TransientModel):
                     present += 1
                 else:
                     absent += 1
+
+                jour_ferier = self.env["hr.leave.report.calendar"].search(
+                    [('name', '>=',rec[0])])
+                if jour_ferier:
+                    jour_ferier += 1
+
+
+
             datas.append({
-                    'id': employee.id,
-                    'name':employee.name,
-                    'present': present,
-                    'absent': absent,
-                })
+                'id': employee.id,
+                'name': employee.name,
+                'jours ferier' : jour_ferier,
+                'present': present,
+                'absent': absent,
+            })
         res = {
-            'attendances':datas,
+            'attendances': datas,
             'start_date': self.from_date,
             'end_date': self.to_date,
         }
         data = {
             'form': res,
         }
-        return self.env.ref('Employe_rapport.report_hr_attendance').report_action([],data=data)
+
+
+
+
+
+
+
+        return self.env.ref('employe_rapport.rapport_synthese').report_action([],data=data)
+
+    @api.constrains('date_from','to_date')
+    def _check_date(self):
+        from_date = self.from_date
+        to_date = self.to_date
+        if from_date > to_date:
+            raise ValidationError("Date début doit inférieur à date fin")
+
+
+
+
+
+
+
+
+

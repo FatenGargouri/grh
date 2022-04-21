@@ -5,9 +5,15 @@
               sequence="1" />
 
     <menuitem id="menu_table_master"
-              name="Rapports de la semaine"
+              name="Rapports Journaliers"
               parent="menu_horaire_root"
-              action="attendance_report_action_window"
+              action="action_daily_report"
+              sequence="1" />
+
+    <menuitem id="menu_tables_master"
+              name="Rapports de synthèses"
+              parent="menu_horaire_root"
+              action="action_synthese_report"
               sequence="1" />
 
 </odoo>

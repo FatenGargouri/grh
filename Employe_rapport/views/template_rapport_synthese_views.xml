@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <template id="print_attendance_report_template">
+        <template id="print_rapport_synthese_template">
             <t t-call="web.html_container">
                 <t t-call="web.internal_layout">
                     <h3 class="text-center"><span t-esc="form.get('start_date')"/> to <span t-esc="form.get('end_date')"/></h3>
@@ -8,24 +8,27 @@
                         <thead>
                             <tr>
                                 <th class="text-center">
-                                    <strong>ID</strong>
+                                    <strong>Nom de l'employe</strong>
                                 </th>
                                 <th class="text-center">
-                                    <strong>Name</strong>
+                                    <strong>Jours travaillés</strong>
                                 </th>
                                 <th class="text-center">
-                                    <strong>Present</strong>
+                                    <strong>Jours absents</strong>
                                 </th>
                                 <th class="text-center">
-                                    <strong>Absent</strong>
+                                    <strong>Congés pris</strong>
+                                </th>
+                                <th class="text-center">
+                                    <strong>Jours feriers</strong>
+                                </th>
+                                <th class="text-center">
+                                    <strong>Jours feriers travaillés</strong>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr t-foreach="form.get('attendances')" t-as="l">
-                                <td class="text-right">
-                                    <span t-esc="l.get('id')"/>
-                                </td>
                                 <td class="text-right">
                                     <span t-esc="l.get('name')"/>
                                 </td>
@@ -34,6 +37,12 @@
                                 </td>
                                 <td class="text-right">
                                     <span t-esc="l.get('absent')"/>
+                                </td>
+                                <td class="text-right">
+
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="l.get('jour_ferier')"/>
                                 </td>
                             </tr>
                         </tbody>

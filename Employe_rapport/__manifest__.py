@@ -6,20 +6,24 @@
     'version': '1.1',
     'category': 'Human Resources/Rapports',
     'sequence': 95,
-    'summary': 'Rapport des employés',
+    'summary': 'Rapports',
     'description': "",
     'depends': [
         'base',
         'mail',
         'hr',
-        'hr_attendance'
+       
+
 
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/form_views.xml',
-        'views/rapport_template_views.xml',
-        'views/rapport_views.xml',
+        'views/form_journalier_views.xml',
+        'views/template_rapport_journalier_views.xml',
+        'views/rapport_journalier_views.xml',
+        'views/form_synthese_views.xml',
+        'views/template_rapport_synthese_views.xml',
+        'views/rapport_synthese_views.xml',
         'views/menu.xml',
 
 
