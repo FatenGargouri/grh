@@ -30,3 +30,15 @@ class TypeConges(models.Model):
     """
     _inherit = "hr.leave.type"
 
+
+# class HolidayPublic(models.Model):
+#         """
+#         NB: description de la classe
+#         """
+#         _inherit = "hr.holidays"
+#
+
+
+
+
+

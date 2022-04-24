@@ -54,7 +54,7 @@
                                     <span t-esc="l.get('depart')"/>
                                 </td>
                                 <td class="text-right">
-                                    <span t-esc="l.get('supp')"/>
+                                    <!--                                    <span t-esc="l.get('supp')"/>-->
                                 </td>
                                 <td class="text-right">
                                     <span t-esc="l.get('etat')"/>

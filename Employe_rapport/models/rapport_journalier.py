@@ -41,10 +41,10 @@ class RapportJournalier(models.TransientModel):
                     etat = "Present"
                 else:
                     etat = "Absent"
-
-                #Calculer les heures supplémentaires
-                if attendances.worked_hours > 8:
-                    supp = attendances.worked_hours-8
+                #
+                # #Calculer les heures supplémentaires
+                # if attendances.worked_hours > 8:
+                #     supp = attendances.worked_hours-8
 
                 #Calculer les departs anticipé
                 # if attendances.check_out < 17:00:
@@ -57,8 +57,8 @@ class RapportJournalier(models.TransientModel):
                 'sortie': attendances.check_out,
                 'worked_hours': attendances.worked_hours,
                 'late': attendances.late_check_in,
-                'depart' : depart,
-                'supp' : supp,
+                'depart': depart,
+                # 'supp' : supp,
                 'etat': etat,
             })
         res = {

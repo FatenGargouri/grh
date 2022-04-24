@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Ce record permet l'héritage de la vue tree présence  -->
+    <record id="view_attendance_tree_inherit" model="ir.ui.view">
+        <field name="name">	hr.attendance.tree</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="arch" type="xml">
+            <!-- modifier le label de champ parent_id-->
+            <xpath expr="//field[@name='check_in']" position="attributes">
+                <attribute name="string" >Arrivée</attribute>
+            </xpath>
+            <xpath expr="//field[@name='check_out']" position="attributes">
+                <attribute name="string" >Sortie</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

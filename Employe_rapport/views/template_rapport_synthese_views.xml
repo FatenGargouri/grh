@@ -28,7 +28,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr t-foreach="form.get('attendances')" t-as="l">
+                            <tr t-foreach="form.get('attendances','conges')" t-as="l">
                                 <td class="text-right">
                                     <span t-esc="l.get('name')"/>
                                 </td>
@@ -39,10 +39,13 @@
                                     <span t-esc="l.get('absent')"/>
                                 </td>
                                 <td class="text-right">
-
+                                     <span t-esc="l.get('conges_pris')"/>
                                 </td>
                                 <td class="text-right">
                                     <span t-esc="l.get('jour_ferier')"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="l.get('jour_ferier_travaille')"/>
                                 </td>
                             </tr>
                         </tbody>
