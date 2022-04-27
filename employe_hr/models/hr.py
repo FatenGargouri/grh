@@ -37,7 +37,7 @@ class HrEmployee(models.Model):
     # Un controle pour le champ matricule doit etre existe dans la base et ne contient que des nombres .
     @api.constrains('matricule')
     def _check_matricule(self):
-        for employee in self:
+       for employee in self:
             if employee.matricule and not (employee.matricule.isdigit()):
                 raise ValidationError("Le champ matricule doit contenir que des nombres")
 
