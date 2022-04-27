@@ -8,6 +8,9 @@
                         <thead>
                             <tr>
                                 <th class="text-center">
+                                    <strong>Date</strong>
+                                </th>
+                                <th class="text-center">
                                     <strong>Nom de l'employé</strong>
                                 </th>
                                 <th class="text-center">
@@ -19,12 +22,12 @@
                                 <th class="text-center">
                                     <strong>Heures travaillés</strong>
                                 </th>
-                                <th class="text-center">
-                                    <strong>Retard</strong>
-                                </th>
-                                <th class="text-center">
-                                    <strong>Depart anticipé</strong>
-                                </th>
+<!--                                <th class="text-center">-->
+<!--                                    <strong>Retard</strong>-->
+<!--                                </th>-->
+<!--                                <th class="text-center">-->
+<!--                                    <strong>Depart anticipé</strong>-->
+<!--                                </th>-->
                                 <th class="text-center">
                                     <strong>Heures supplémentaires</strong>
                                 </th>
@@ -34,7 +37,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr t-foreach="form.get('attendances')" t-as="l">
+                            <tr t-foreach="form.get('attendances','date_from')" t-as="l">
+                                <td class="text-right">
+                                    <span t-esc="l.get('date')"/>
+                                </td>
                                 <td class="text-right">
                                     <span t-esc="l.get('name')"/>
                                 </td>
@@ -47,14 +53,14 @@
                                 <td class="text-right">
                                     <span t-esc="l.get('worked_hours')"/>
                                 </td>
+<!--                                <td class="text-right">-->
+<!--                                    <span t-esc="l.get('late')"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-right">-->
+<!--                                    <span t-esc="l.get('depart')"/>-->
+<!--                                </td>-->
                                 <td class="text-right">
-                                    <span t-esc="l.get('late')"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-esc="l.get('depart')"/>
-                                </td>
-                                <td class="text-right">
-                                    <!--                                    <span t-esc="l.get('supp')"/>-->
+                                    <span t-esc="l.get('supp')"/>
                                 </td>
                                 <td class="text-right">
                                     <span t-esc="l.get('etat')"/>

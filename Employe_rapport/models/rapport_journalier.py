@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-from datetime import date, datetime, time
+from datetime import date, datetime, time , timedelta
 from odoo.exceptions import ValidationError
 from dateutil.relativedelta import relativedelta
 from pytz import timezone
@@ -24,41 +24,50 @@ class RapportJournalier(models.TransientModel):
 
         employees = self.env['hr.employee'].search(domain)
         for employee in employees:
-            retard = 0
-            depart = 0
             supp =0
-
             tz = timezone(employee.resource_calendar_id.tz)
             date_from = tz.localize(datetime.combine(fields.Datetime.from_string(str(self.from_date)), time.min))
             date_to = tz.localize(datetime.combine(fields.Datetime.from_string(str(self.to_date)), time.max))
             intervals = employee.list_work_time_per_day(date_from, date_to, calendar=employee.resource_calendar_id)
+            
             #Indiquer si l'employé est présent ou absent .
             for rec in intervals:
                 attendances = self.env["hr.attendance"].search(
                     [('employee_id', '=', employee.id), ('check_in', '>=', rec[0]),
-                     ('check_in', '<=', rec[0])])
+                     ('check_out', '<=', rec[0])])
                 if attendances:
                     etat = "Present"
                 else:
                     etat = "Absent"
-                #
+
+                # # Calculer le retard
+                # hours = self.env["res.config.settings"].search([])
+                # if (attendances.check_in).time() > hours.hour_from:
+                #     late = (attendances.check_in).time() - hours.hour_from
+                # Calculer les departs anticipé
+                # timesortie1 ="12:00:00"
+                # timesortie2 ="17:00:00"
+                # date_timesortie1 = datetime.strptime(timesortie1, '%H:%M:%S')
+                # date_timesortie2 = datetime.strptime(timesortie2, '%H:%M:%S')
+                # if attendances.check_out < date_timesortie1 or attendances.check_out < date_timesortie2:
+                #     depart1 = date_timesortie1 - attendances.check_out
+                #     depart2 = date_timesortie2 - attendances.check_out
+                #     depart = depart1 + depart2
+
+
                 # #Calculer les heures supplémentaires
                 # if attendances.worked_hours > 8:
                 #     supp = attendances.worked_hours-8
 
-                #Calculer les departs anticipé
-                # if attendances.check_out < 17:00:
-                #     depart = attendances.check_out- 17:00
-
-
             datas.append({
+                'date': intervals,
                 'name': employee.name,
                 'entre': attendances.check_in,
                 'sortie': attendances.check_out,
                 'worked_hours': attendances.worked_hours,
-                'late': attendances.late_check_in,
-                'depart': depart,
-                # 'supp' : supp,
+                # 'late': attendances.late_check_in,
+                # 'depart': depart,
+                # 'supp': supp,
                 'etat': etat,
             })
         res = {

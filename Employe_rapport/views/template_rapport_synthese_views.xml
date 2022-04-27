@@ -19,12 +19,12 @@
                                 <th class="text-center">
                                     <strong>Congés pris</strong>
                                 </th>
-                                <th class="text-center">
-                                    <strong>Jours feriers</strong>
-                                </th>
-                                <th class="text-center">
-                                    <strong>Jours feriers travaillés</strong>
-                                </th>
+<!--                                <th class="text-center">-->
+<!--&lt;!&ndash;                                    <strong>Jours feriers</strong>&ndash;&gt;-->
+<!--                                </th>-->
+<!--                                <th class="text-center">-->
+<!--&lt;!&ndash;                                    <strong>Jours feriers travaillés</strong>&ndash;&gt;-->
+<!--                                </th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -41,12 +41,12 @@
                                 <td class="text-right">
                                      <span t-esc="l.get('conges_pris')"/>
                                 </td>
-                                <td class="text-right">
-                                    <span t-esc="l.get('jour_ferier')"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-esc="l.get('jour_ferier_travaille')"/>
-                                </td>
+<!--                                <td class="text-right">-->
+<!--&lt;!&ndash;                                    <span t-esc="l.get('jour_ferier')"/>&ndash;&gt;-->
+<!--                                </td>-->
+<!--                                <td class="text-right">-->
+<!--&lt;!&ndash;                                    <span t-esc="l.get('jour_ferier_travaille')"/>&ndash;&gt;-->
+<!--                                </td>-->
                             </tr>
                         </tbody>
                     </table>

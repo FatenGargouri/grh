@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-from datetime import date, datetime, time
+from datetime import date, datetime, time, timedelta
 from odoo.exceptions import ValidationError
 from dateutil.relativedelta import relativedelta
 from pytz import timezone
@@ -20,7 +20,6 @@ class RapportSynthese(models.TransientModel):
     def print_report(self):
         domain = []
         datas = []
-        jour_ferier =0
         if self.employee_id:
             domain.append(('id', '=', self.employee_id.ids))
 
@@ -41,6 +40,7 @@ class RapportSynthese(models.TransientModel):
                     present += 1
                 else:
                     absent += 1
+
                 #Le nombre de jours feriers
                 public = self.env["resource.calendar.leaves"].search([('date_from','>=',date_from),('date_to','<=',date_to)])
                 sum_days = 0
@@ -50,6 +50,20 @@ class RapportSynthese(models.TransientModel):
                     diff_days = (date_end - date_start).days
                     sum_days += 1
 
+
+
+                    #calculer les jours feriers travaillés
+                    # delta = date_end - date_start  # returns timedelta
+                    # for i in range(delta.days+1):
+                    #     day = date_start + timedelta(days=i+1)
+                    #     jour_clean = list.append(day)
+                    #     for element in jour_clean:
+                    #         if element not in list:
+                    #            list.append(element)
+                    #     del list[-1]
+                    #     print(list)
+
+
                 #Le nombre de congés pris
                 conges = self.env["hr.leave"].search([('employee_id', '=', employee.id),('date_from','>=',date_from),('date_to','<=',date_to),('state', 'in', ['validate', 'validate1'])])
                 conges_pris=0
@@ -58,17 +72,25 @@ class RapportSynthese(models.TransientModel):
                     date_end = line.date_to
                     diff_days = (date_end - date_start).days
                     conges_pris +=1
-
                 #Le nombre de jours feriers travaillés
-                public_travaille = self.env["hr.attendance"].search(
-                    [('employee_id', '=', employee.id),('check_in', '>=', rec[0])])
-                jour_ferier_travaille=0
-                for line in public:
-                    date_start = line.date_from
-                    date_end = line.date_to
-                    diff_days = (date_end - date_start).days
-                for sum_days in public_travaille:
-                    jour_ferier_travaille +=1
+
+
+
+
+
+
+                # for line in public:
+                #     date_start = line.date_from
+                #     date_end = line.date_to
+                #     diff_days = (date_end - date_start).days
+                #
+                # jour_ferier_travaille=0
+                # for line in public:
+                #     date_start = line.date_from
+                #     date_end = line.date_to
+                #     diff_days = (date_end - date_start).days
+                # for sum_days in public_travaille:
+                #     jour_ferier_travaille +=1
 
 
 
@@ -76,9 +98,9 @@ class RapportSynthese(models.TransientModel):
             datas.append({
                 'id': employee.id,
                 'name': employee.name,
-                'jour_ferier' : sum_days,
-                'conges_pris' : conges_pris,
-                'jour_ferier_travaille': jour_ferier_travaille,
+                'conges_pris': conges_pris,
+                'jour_ferier': sum_days,
+                # 'jour_ferier_travaille': jour_ferier_travaille,
                 'present': present,
                 'absent': absent,
             })
