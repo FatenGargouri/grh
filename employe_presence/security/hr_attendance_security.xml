@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_attendance.group_hr_attendance_kiosk" model="res.groups">
+        <field name="name">Kiosk Attendance</field>
+        <field name="category_id" ref="base.module_category_human_resources_employees"/>
+        <field name="comment">The user will be able to open the kiosk mode and validate the employee PIN.</field>
+        <field name="implied_ids" eval="[(4, ref('employe_hr.group_hr_simple_user'))]"/>
+    </record>
+</odoo>
