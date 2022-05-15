@@ -66,12 +66,15 @@ class RapportSynthese(models.TransientModel):
 
                 #Le nombre de congés pris
                 conges = self.env["hr.leave"].search([('employee_id', '=', employee.id),('date_from','>=',date_from),('date_to','<=',date_to),('state', 'in', ['validate', 'validate1'])])
-                conges_pris=0
+                # conges_pris=0
+                diff_days = 0
                 for line in conges:
                     date_start = line.date_from
                     date_end = line.date_to
                     diff_days = (date_end - date_start).days
-                    conges_pris +=1
+                    # conges_pris +=1
+                    diff_days +=1
+
                 #Le nombre de jours feriers travaillés
 
 
@@ -98,7 +101,7 @@ class RapportSynthese(models.TransientModel):
             datas.append({
                 'id': employee.id,
                 'name': employee.name,
-                'conges_pris': conges_pris,
+                'conges_pris': diff_days,
                 'jour_ferier': sum_days,
                 # 'jour_ferier_travaille': jour_ferier_travaille,
                 'present': present,
@@ -125,7 +128,7 @@ class RapportSynthese(models.TransientModel):
     def _check_date(self):
         from_date = self.from_date
         to_date = self.to_date
-        if from_date > to_date:
+        if from_date >= to_date:
             raise ValidationError("Date début doit inférieur à date fin")
 
 
