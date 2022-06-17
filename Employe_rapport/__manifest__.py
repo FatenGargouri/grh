@@ -18,6 +18,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'views/form_journalier_views.xml',
         'views/template_rapport_journalier_views.xml',
         'views/rapport_journalier_views.xml',
@@ -25,6 +26,7 @@
         'views/template_rapport_synthese_views.xml',
         'views/rapport_synthese_views.xml',
         'views/menu.xml',
+
 
 
 

@@ -13,8 +13,8 @@
                             <field name="to_date"/>
                         </group>
                         <footer>
-                            <button name="print_report" string="Print" type="object" class="btn-success"/>
-                            <button string="Close" class="btn-danger" special="cancel"/>
+                            <button name="print_report" string="Afficher" type="object" class="btn-success"/>
+<!--                            <button string="Close" class="btn-danger" special="cancel"/>-->
                         </footer>
                     </sheet>
                     <div class="oe_chatter">

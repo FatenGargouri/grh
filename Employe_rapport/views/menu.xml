@@ -2,7 +2,7 @@
 <odoo>
     <menuitem id="menu_horaire_root"
               name="Rapports"
-              groups="hr.group_hr_manager"
+              groups="hr.group_hr_manager,hr.group_hr_user,employe_hr.group_hr_simple_user"
               sequence="1" />
 
     <menuitem id="menu_table_master"
